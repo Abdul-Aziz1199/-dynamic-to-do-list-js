@@ -16,7 +16,7 @@
           //button for removing a task
          const removeButton = document.createElement('button');
            removeButton.textContent = "Remove";
-           removeButton.classList.add('remove-btn');
+           removeButton.classList.add('remove-btn');//to add 'remove-btn' class to js
          removeButton.className = 'remove-btn';
          //onclick to remove task when triggered
          removeButton.onclick= function(){
@@ -37,7 +37,7 @@
 
           //add keypress to addTask to add task when press is enter key
           taskInput.addEventListener('keypress', function(event){
-              if(event.key === 'enter'){
+              if(event.key === 'Enter'){
                 addTask();
               }
           })
