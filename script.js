@@ -8,7 +8,7 @@
           const taskList = document.getElementById("task-list");
 
           function addTask(){
-              let taskText = taskInput.value.trim();
+              let taskText   = taskInput.value.trim();
          if(taskText !== ''){
        
           const taskItem = document.createElement('li');
@@ -16,6 +16,7 @@
           //button for removing a task
          const removeButton = document.createElement('button');
            removeButton.textContent = "Remove";
+           removeButton.classList.add('remove-btn');
          removeButton.className = 'remove-btn';
          //onclick to remove task when triggered
          removeButton.onclick= function(){
