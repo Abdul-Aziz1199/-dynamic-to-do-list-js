@@ -7,7 +7,7 @@
 
             function addTask(){
                 let taskText = taskInput.value.trim();
-        if(taskText === ""){
+        if(taskText !== ""){
             alert('please enter a task!')
         }else{
             const taskItem = document.createElement('li');
