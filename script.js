@@ -1,6 +1,64 @@
         document.addEventListener('DOMContentLoad', function(){
 
+            //local storage project start
+
+              // Function to load tasks from local storage
+              function loadTasks() {
+                  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                  tasks.forEach(task => {
+                      createTaskElement(task);
+                  });
+              }
           
+              // Function to create a task element and append it to the DOM
+              function createTaskElement(task) {
+                  const li = document.createElement('li');
+                  li.textContent = task;
+          
+                  const removeButton = document.createElement('button');
+                  removeButton.textContent = 'Remove';
+                  removeButton.addEventListener('click', function() {
+                      removeTask(task);
+                      li.remove();
+                  });
+          
+                  li.appendChild(removeButton);
+                  document.getElementById('task-list').appendChild(li);
+              }
+          
+              // Function to add a task
+              function addTask(task) {
+                  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                  tasks.push(task);
+                  localStorage.setItem('tasks', JSON.stringify(tasks));
+                  createTaskElement(task);
+              }
+          
+              // Function to remove a task
+              function removeTask(taskToRemove) {
+                  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                  tasks = tasks.filter(task => task !== taskToRemove);
+                  localStorage.setItem('tasks', JSON.stringify(tasks));
+              }
+          
+              // Event listener for adding a task
+              document.getElementById('add-task-btn').addEventListener('click', function() {
+                  const taskInput = document.getElementById('task-input');
+                  const task = taskInput.value.trim();
+                  if (task !== '') {
+                      addTask(task);
+                      taskInput.value = '';
+                  }
+              });
+          
+              // Load tasks from local storage when the page loads
+              loadTasks();
+          
+
+          
+
+          //local storage end
+
           const addButton = document.getElementById("add-task-btn");
 
           const taskInput = document.getElementById("task-input");
@@ -46,6 +104,7 @@
 
         })
         document.addEventListener('DOMContentLoaded',addTask);
+      
 
        
            
